@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ bank.address }}
+{% endblock %}
+
+{
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="thumbnail">
+            <h1> {{ bank.idbank }}</h1> <h3>{{ bank.address }}</h3><h3>{{ bank.director }}</h3>
+            <img src="{{ bank.image.url }}" class="img-rounded" >
+
+        </div>
+    </div>
+
+
+{% endblock %}

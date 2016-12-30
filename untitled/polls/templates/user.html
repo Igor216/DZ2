@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ user.name }}
+{% endblock %}
+
+{% block title_visible %}
+    {{ user.lastname }}
+{% endblock %}
+
+{% block body %}
+    {{ user.name }}
+    <br/>
+    ID {{ user.id }}
+    <p>Телефон {{ user.phone }}</p>
+
+    <br/>
+    <br/>
+
+    Transactions:
+    <ul>
+        {% for t in transactions %}
+            <li>{{ t.idtran }} ({{ t.sum }}) <img id="brand-img" src="{{t.image.url}}"></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

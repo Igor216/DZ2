@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Новая транзакция</h1>
+        <form method="POST" role="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form}}
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

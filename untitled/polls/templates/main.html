@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block title_visible %}
+    {% if request.user.is_authenticated %}
+        Транзакции, которые имеет {{ request.user.last_name }}
+    {% else %}
+        Выполните вход или регистрацию
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+     {% if request.user.is_authenticated %}
+
+         <h2>Транзакции:</h2>
+            Список транзакций:
+         <p>id Сумма Тип id юзера id банка</p>
+         {% for t in transactions %}
+            <br> {{t.idtran}}  {{t.sum}}  {{t.type}} {{t.user_id}} {{t.bank_id}}
+         {% endfor %}
+     {% else %}
+         {% for t in transactions %}
+            <br> {{t.idtran}}  {{t.sum}}
+         {% endfor %}
+        {% for u in users %}
+            {% if forloop.counter|divisibleby:2 %}
+                <div class="row">
+            {% endif %}
+        <div class="col-md-6">
+            {% include 'user_short.html' with user=u %}
+        </div>
+        {% if forloop.counter|divisibleby:2 or forloop.last %}
+            </div>
+        {% endif %}
+
+        {% empty %}
+            The list is empty.
+        {% endfor %}
+     {% endif %}
+{% endblock %}%}
+
+

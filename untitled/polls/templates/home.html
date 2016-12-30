@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+    <h1>Банки</h1>
+
+    {% for bank in banks|dictsortreversed:"idbank" %}
+        <h4><a href="{% url 'bank' bank.idbank %}">{{ bank.address }}</a></h4>
+    {% endfor %}
+ <p class="pull-right">&copy; ИУ5-54 Наседкин Игорь, 2016</p>
+{% endblock %}
